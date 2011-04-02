@@ -2,7 +2,7 @@
 
 This module integrates AMFPHP 1.9 (http://www.amfphp.org/) into Kohana 3.x
 
-The current version has been added on Kohana 3.0.4
+The current version has been added on Kohana 3.1.2
 
 ## Installation
 
