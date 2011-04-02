@@ -10,7 +10,7 @@
 	$amfphp['startTime'] = ((float)$usec + (float)$sec);
 	
 	$servicesPath = Kohana::config('amfphp.services_path');
-	$voPath = MODPATH . "amfphp/services/vo/";
+	$voPath = dirname(dirname(__FILE__))."services/vo/";
 	
 	//As an example of what you might want to do here, consider:
 	
