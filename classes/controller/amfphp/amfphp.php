@@ -33,24 +33,24 @@ class Controller_Amfphp_AMFPHP extends Controller
 			return;
 		}
 		
-		echo View::factory('browser/index');
+		$this->response->body( View::factory('browser/index') );
 	}
 	
 	public function action_asset()
 	{
 		$asset = $this->request->param('filename');
 		
-		$file = MODPATH . 'amfphp/assets/' . $asset;
+		$file = MODPATH . 'kohana-amfphp/assets/' . $asset;
 		
 		if (!is_file($file))
 		{
 			throw new Kohana_Exception('Asset does not exist');
 		}
 		
-		$this->request->headers('Content-Type') = File::mime($file);
-		$this->request->headers('Content-Length') = filesize($file);
+		$this->request->headers('Content-Type', (string) File::mime($file));
+        $this->request->headers('Content-length', (string) filesize($file));
 		
-		$this->request->send_headers();
+		$this->response->send_headers();
 		
 		$content = @fopen($file, 'rb');
 		if ($content)
