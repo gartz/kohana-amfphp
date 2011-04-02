@@ -38,9 +38,11 @@ class Controller_Amfphp_AMFPHP extends Controller
 	
 	public function action_asset()
 	{
-		$asset = $this->request->param('filename');
+		$file = $this->request->param('filename');
 		
-		$file = MODPATH . 'kohana-amfphp/assets/' . $asset;
+		$file = explode(".", $file);
+		
+		$file = Kohana::find_file('assets', $file[0], $file[1]);
 		
 		if (!is_file($file))
 		{
